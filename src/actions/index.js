@@ -9,11 +9,8 @@ import jsonPlaceholder from '../apis/jsonPlaceholder';
 // redux-thunk allows us to return a function as an action
 
 
-export const fetchPosts = async () => {
-  const response = await jsonPlaceholder.get('./posts');
+export const fetchPosts = () => async dispatch => {
+    const response = await jsonPlaceholder.get('/posts');
   
-  return {
-    type: 'FETCH_POSTS',
-    payload: response
-  };
+    dispatch({ type: 'FETCH_POSTS', payload: response });
 };
