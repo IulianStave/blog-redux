@@ -1,5 +1,5 @@
 import postsReducer from './postsReducer';
-import usersReducer from './userReducer';
+import usersReducer from './usersReducer';
 
 import { combineReducers } from 'redux';
 
