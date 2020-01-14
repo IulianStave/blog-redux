@@ -14,3 +14,10 @@ export const fetchPosts = () => async dispatch => {
   
     dispatch({ type: 'FETCH_POSTS', payload: response.data });
 };
+
+export const fetchUser = (id) => async dispatch => {
+    // the path '/users/'+id can be conveyed as `/users/${id}`
+    // using backticks and ${} using ES2015 syntax
+    const response = await jsonPlaceholder.get(`/users/${id}`);
+    dispatch({ type: 'FETCH_USER', payload: response.data});
+};
