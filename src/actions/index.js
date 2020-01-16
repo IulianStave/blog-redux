@@ -20,6 +20,14 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
   // await is not needed in front of dispatch(fetchUser(id)))
   // since we don't have any logic after it
   userIds.forEach(id => dispatch(fetchUser(id)));
+  // refactor the above code using .chain
+  /*
+  _.chain(getState().posts)
+    .map('userId')
+    .uniq()
+    .forEach(id => dispatch(fetchUser(id)))
+    .value();
+    */
 };
 
 export const fetchPosts = () => async dispatch => {
