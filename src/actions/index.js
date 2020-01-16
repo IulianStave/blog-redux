@@ -16,9 +16,10 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
   await dispatch(fetchPosts());
   // use lodash map to get userId s
   const userIds = _.uniq(_.map(getState().posts, 'userId'));
-  console.log(userIds);
-
-
+  // console.log(userIds);
+  // await is not needed in front of dispatch(fetchUser(id)))
+  // since we don't have any logic after it
+  userIds.forEach(id => dispatch(fetchUser(id)));
 };
 
 export const fetchPosts = () => async dispatch => {
