@@ -9,6 +9,17 @@ import jsonPlaceholder from '../apis/jsonPlaceholder';
 // https://github.com/reduxjs/redux-thunk
 // redux-thunk allows us to return a function as an action
 
+export const fetchPostsAndUsers = () => async (dispatch, getState) => {
+  // call fetchPosts action creator - returns the inner function
+  // and dispatch it
+  // we use await to make sure the posts are fetched
+  await dispatch(fetchPosts());
+  // use lodash map to get userId s
+  const userIds = _.uniq(_.map(getState().posts, 'userId'));
+  console.log(userIds);
+
+
+};
 
 export const fetchPosts = () => async dispatch => {
   const response = await jsonPlaceholder.get('/posts');
