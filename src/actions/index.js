@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import jsonPlaceholder from '../apis/jsonPlaceholder';
 
 // use async await syntax to fetch data / posts from api
@@ -10,14 +11,20 @@ import jsonPlaceholder from '../apis/jsonPlaceholder';
 
 
 export const fetchPosts = () => async dispatch => {
-    const response = await jsonPlaceholder.get('/posts');
-  
-    dispatch({ type: 'FETCH_POSTS', payload: response.data });
+  const response = await jsonPlaceholder.get('/posts');
+  dispatch({ type: 'FETCH_POSTS', payload: response.data });
 };
 
+
 export const fetchUser = (id) => async dispatch => {
-    // the path '/users/'+id can be conveyed as `/users/${id}`
-    // using backticks and ${} using ES2015 syntax
-    const response = await jsonPlaceholder.get(`/users/${id}`);
-    dispatch({ type: 'FETCH_USER', payload: response.data});
+  const response = await jsonPlaceholder.get(`/users/${id}`);
+  dispatch({ type: 'FETCH_USER', payload: response.data });
 };
+
+// export const fetchUser = (id) => dispatch => _fetchUser(id, dispatch);
+
+// const _fetchUser = _.memoize(async (id, dispatch) => {
+//   const response = await jsonPlaceholder.get(`/users/${id}`);
+//   dispatch({ type: 'FETCH_USER', payload: response.data});
+// });
+
